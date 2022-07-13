@@ -473,3 +473,4 @@ crashlytics-build.properties
 # Assets that shouldn't be pushed to repository
 /[Aa]ssets/[Tt]hirdParty/*
 /[Aa]ssets/[Pp]lugins/*
+/[Aa]ssets/[Pp]ixelEngine
