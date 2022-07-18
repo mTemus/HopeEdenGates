@@ -55,7 +55,7 @@ public partial class @InputControls : IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard"",
                     ""action"": ""PlayerMovement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -66,7 +66,7 @@ public partial class @InputControls : IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard"",
                     ""action"": ""PlayerMovement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -77,7 +77,7 @@ public partial class @InputControls : IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard"",
                     ""action"": ""PlayerMovement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -88,7 +88,7 @@ public partial class @InputControls : IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard"",
                     ""action"": ""PlayerMovement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -96,7 +96,19 @@ public partial class @InputControls : IInputActionCollection2, IDisposable
             ]
         }
     ],
-    ""controlSchemes"": []
+    ""controlSchemes"": [
+        {
+            ""name"": ""Keyboard"",
+            ""bindingGroup"": ""Keyboard"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Keyboard>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        }
+    ]
 }");
         // MainMap
         m_MainMap = asset.FindActionMap("MainMap", throwIfNotFound: true);
@@ -189,6 +201,15 @@ public partial class @InputControls : IInputActionCollection2, IDisposable
         }
     }
     public MainMapActions @MainMap => new MainMapActions(this);
+    private int m_KeyboardSchemeIndex = -1;
+    public InputControlScheme KeyboardScheme
+    {
+        get
+        {
+            if (m_KeyboardSchemeIndex == -1) m_KeyboardSchemeIndex = asset.FindControlSchemeIndex("Keyboard");
+            return asset.controlSchemes[m_KeyboardSchemeIndex];
+        }
+    }
     public interface IMainMapActions
     {
         void OnPlayerMovement(InputAction.CallbackContext context);
