@@ -1,15 +1,13 @@
 using System;
 using UnityEngine;
 
-public class Object2DMovementManualInputConstructorMono : MonoBehaviour, SimpleObjectChunkConstructorMonoBase
+public class Object2DMovementManualInputConstructorMono : MonoBehaviour, ISimpleObjectChunkConstructorMonoBase
 {
     [Serializable]
     public class Object2DMovementManualInputPackage : SimpleObjectChunkPackageBase
     {
         public ActionMapSystem.ActionMapType MovementActionMapType;
         public string MovementActionName;
-        
-        public float MovementSpeed;
     }
 
     public Object2DMovementManualInputPackage Package;
