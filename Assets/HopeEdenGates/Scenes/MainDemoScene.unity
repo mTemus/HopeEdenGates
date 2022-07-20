@@ -173,6 +173,8 @@ MonoBehaviour:
   m_simpleObjectChunksToCreate:
   - ObjectWorldPositionState
   - Object2DFacingDirectionState
+  - Object2DPhysicsState
+  - Object2DAnimatorController
   m_lookForMonoChunkConstructors: 1
 --- !u!114 &182407146
 MonoBehaviour:
