@@ -11,6 +11,7 @@ public class Object2DCharacterController : SimpleObjectChunk
     private Rigidbody2D m_rigidBody2D;
     private Object2DFacingDirectionState m_facingDirectionState;
     private ObjectWorldPositionState m_worldPositionState;
+    private Object2DPhysicsState m_physicsState;
     private float m_speed;
 
     public override void PostInitialize()
@@ -19,12 +20,14 @@ public class Object2DCharacterController : SimpleObjectChunk
         m_rigidBody2D = (SimpleObject as SimpleObjectWithGameObject).CreatedGameObject.GetComponent<Rigidbody2D>();
         m_facingDirectionState = SimpleObject.GetChunk<Object2DFacingDirectionState>();
         m_worldPositionState = SimpleObject.GetChunk<ObjectWorldPositionState>();
+        m_physicsState = SimpleObject.GetChunk<Object2DPhysicsState>();
     }       
 
     public void Move(Vector2 direction)
     {
         m_rigidBody2D.velocity = direction * m_speed;
         m_worldPositionState.Position.Value = m_rigidBody2D.transform.position;
+        m_physicsState.Velocity.Value = m_rigidBody2D.velocity;
 
         if (direction.x != 0)
             TurnCharacterFacingDirection(direction.x == 1f);
